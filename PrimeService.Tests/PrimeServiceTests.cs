@@ -1,10 +1,9 @@
 using AutoBogus;
 using NUnit.Framework;
-using Prime.Services;
 
-namespace Prime.UnitTests.Services
+namespace Prime.Services.Tests
 {
-    [TestFixture]
+    [TestFixture, NonParallelizable]
     public class PrimeServiceTests
     {
         [Test]

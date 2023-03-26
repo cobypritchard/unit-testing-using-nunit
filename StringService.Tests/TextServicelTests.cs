@@ -1,11 +1,9 @@
-using AutoBogus;
 using Bogus;
 using NUnit.Framework;
-using String.Services;
 
-namespace String.UnitTests.Services
+namespace String.Services.Tests
 {
-    [TestFixture]
+    [TestFixture, NonParallelizable]
     public class TextServiceTests
     {
         [Test]

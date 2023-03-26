@@ -3,6 +3,8 @@
   <ItemGroup>
     <ProjectReference Include="..\PrimeService\PrimeService.csproj" />
     <ProjectReference Include="..\StringService\StringService.csproj" />
+    <ProjectReference Include="..\GenericService\GenericService.csproj" />
+    <ProjectReference Include="..\InferenceService\InferenceService.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
