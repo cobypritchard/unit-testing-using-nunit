@@ -5,7 +5,7 @@ namespace String.Services
         public override string IsStringAbstract(string candidate)
         {
             var returnVal = string.Format("{0} what the input in a abstract Is String(Text).", candidate);
-            Console.WriteLine(returnVal);
+            //Console.WriteLine(returnVal);
             return returnVal;
         }
 
@@ -13,7 +13,7 @@ namespace String.Services
         {
             base.IsStringNonVirtual(candidate);
             var returnVal = string.Format("{0} what the input in a non-virtual Is String(Text).", candidate);
-            Console.WriteLine(returnVal);
+            //Console.WriteLine(returnVal);
             return returnVal;
         }
 
@@ -21,7 +21,7 @@ namespace String.Services
         {
             base.IsStringVirtual(candidate);
             var returnVal = string.Format("{0} what the input in a virtual Is String(Text).", candidate);
-            Console.WriteLine(returnVal);
+            //Console.WriteLine(returnVal);
             return returnVal;
         }
     }

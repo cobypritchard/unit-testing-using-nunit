@@ -1,7 +1,5 @@
 using AutoBogus;
-using Moq;
 using NUnit.Framework;
-using Prime.Services;
 
 namespace Generic.Service.Tests
 {

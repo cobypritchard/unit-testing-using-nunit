@@ -5,7 +5,7 @@ namespace Prime.Services
         public string IsIntNonVirtual(string candidate)
         {
             var returnVal = string.Format("{0} what the input in a non-virtual is Int.", candidate);
-            Console.WriteLine(returnVal);
+            //Console.WriteLine(returnVal);
             return returnVal;
         }
 
@@ -13,7 +13,7 @@ namespace Prime.Services
         {
             var baseReturnVal = base.IsPrimeNonVirtual(candidate);
             var returnVal = string.Format("{0} what the input in a non-virtual is Prime(Int).", candidate);
-            Console.WriteLine(returnVal);
+            //Console.WriteLine(returnVal);
             return returnVal;
         }
 
@@ -21,7 +21,7 @@ namespace Prime.Services
         {
             var baseReturnVal = base.IsPrimeVirtual(candidate);
             var returnVal = string.Format("{0} what the input in a virtual is Prime(Int).", candidate);
-            Console.WriteLine(returnVal);
+            //Console.WriteLine(returnVal);
             return returnVal;
         }
     }

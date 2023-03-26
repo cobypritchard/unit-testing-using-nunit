@@ -11,13 +11,13 @@ public class InferenceService
         primeService = _primeService;
     }
 
-        public string IsInferenceNonVirtual(string candidate)
-        {
-            return primeService.IsPrimeNonVirtual(candidate);
-        }
+    public string IsInferenceNonVirtual(string candidate)
+    {
+        return primeService.IsPrimeNonVirtual(candidate);
+    }
 
-        public virtual string IsInferenceVirtual(string candidate)
-        {
-            return primeService.IsPrimeVirtual(candidate);
-        }
+    public virtual string IsInferenceVirtual(string candidate)
+    {
+        return primeService.IsPrimeVirtual(candidate);
+    }
 }

@@ -13,11 +13,10 @@ namespace Inference.Services.Tests
         public void IsInferenceNonVirtualTest()
         {
             var inputString = AutoFaker.Create().Generate<string>();
+            var expected = string.Format("{0} what the input in a non-virtual is Prime.", inputString);
 
             var primeServiceMock = new Mock<IPrimeService>();
-            primeServiceMock.Setup(x => x.IsPrimeNonVirtual(It.IsAny<string>())).Returns(inputString);
-
-            var expected = string.Format("{0} what the input in a non-virtual is Prime.", inputString);
+            primeServiceMock.Setup(x => x.IsPrimeNonVirtual(It.IsAny<string>())).Returns(expected);
 
             var _inferenceService = new InferenceService(primeServiceMock.Object);
 
@@ -30,11 +29,10 @@ namespace Inference.Services.Tests
         public void IsInferenceVirtualTest()
         {
             var inputString = AutoFaker.Create().Generate<string>();
+            var expected = string.Format("{0} what the input in a virtual is Prime.", inputString);
 
             var primeServiceMock = new Mock<IPrimeService>();
-            primeServiceMock.Setup(x => x.IsPrimeVirtual(It.IsAny<string>())).Returns(inputString);
-
-            var expected = string.Format("{0} what the input in a virtual is Prime.", inputString);
+            primeServiceMock.Setup(x => x.IsPrimeVirtual(It.IsAny<string>())).Returns(expected);
 
             var _inferenceService = new InferenceService(primeServiceMock.Object);
 
