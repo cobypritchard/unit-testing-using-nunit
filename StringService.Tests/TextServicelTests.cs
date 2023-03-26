@@ -1,47 +1,57 @@
-using Bogus;
+using AutoBogus;
 using NUnit.Framework;
 
 namespace String.Services.Tests
 {
-    [TestFixture, NonParallelizable]
     public class TextServiceTests
     {
-        [Test]
-        public void IsStringAbstractTest()
+        private TextService? _textService;
+
+        [SetUp]
+        public void Setup()
         {
-            var inputString = new Faker().Internet.DomainName();
-            var expected = string.Format("{0} what the input in a abstract Is String(Text).", inputString);
+            _textService = new TextService();
+        }
 
-            var _textService = new TextService();
+        [Test]
+        public void IsStringAbstract_ReturnsCorrectResult()
+        {
+            // Arrange
+            var inputString = AutoFaker.Create().Generate<string>();
+            var expected = string.Format("{0} what the input in a abstract is String(Text).", inputString);
 
-            var actual = _textService.IsStringAbstract(inputString);
+            // Act
+            var actual = _textService!.IsStringAbstract(inputString);
 
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
-        public void IsStringNonVirtualTest()
+        public void IsStringNonVirtual_ReturnsCorrectResult()
         {
-            var inputString = new Faker().Internet.DomainName();
-            var expected = string.Format("{0} what the input in a non-virtual Is String(Text).", inputString);
+            // Arrange
+            var inputString = AutoFaker.Create().Generate<string>();
+            var expected = string.Format("{0} what the input in a non-virtual is String(Text).", inputString);
 
-            var _textService = new TextService();
+            // Act
+            var actual = _textService!.IsStringNonVirtual(inputString);
 
-            var actual = _textService.IsStringNonVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
-        public void IsStringVirtualTest()
+        public void IsStringVirtual_ReturnsCorrectResult()
         {
-            var inputString = new Faker().Internet.DomainName();
-            var expected = string.Format("{0} what the input in a virtual Is String(Text).", inputString);
+            // Arrange
+            var inputString = AutoFaker.Create().Generate<string>();
+            var expected = string.Format("{0} what the input in a virtual is String(Text).", inputString);
 
-            var _textService = new TextService();
+            // Act
+            var actual = _textService!.IsStringVirtual(inputString);
 
-            var actual = _textService.IsStringVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
     }

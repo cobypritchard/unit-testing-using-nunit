@@ -6,38 +6,45 @@ using Prime.Services;
 
 namespace Inference.Services.Tests
 {
-    [TestFixture, NonParallelizable]
     public class InferenceServiceTests
     {
-        [Test]
-        public void IsInferenceNonVirtualTest()
+        private Mock<IPrimeService>? _primeServiceMock;
+        private InferenceService? _inferenceService;
+
+        [SetUp]
+        public void Setup()
         {
+            _primeServiceMock = new Mock<IPrimeService>();
+            _inferenceService = new InferenceService(_primeServiceMock.Object);
+        }
+
+        [Test]
+        public void IsInferenceNonVirtual_ReturnsCorrectResult()
+        {
+            // Arrange
             var inputString = AutoFaker.Create().Generate<string>();
             var expected = string.Format("{0} what the input in a non-virtual is Prime.", inputString);
+            _primeServiceMock!.Setup(x => x.IsPrimeNonVirtual(It.IsAny<string>())).Returns(expected);
 
-            var primeServiceMock = new Mock<IPrimeService>();
-            primeServiceMock.Setup(x => x.IsPrimeNonVirtual(It.IsAny<string>())).Returns(expected);
+            // Act
+            var actual = _inferenceService!.IsInferenceNonVirtual(inputString);
 
-            var _inferenceService = new InferenceService(primeServiceMock.Object);
-
-            var actual = _inferenceService.IsInferenceNonVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
-        public void IsInferenceVirtualTest()
+        public void IsInferenceVirtual_ReturnsCorrectResult()
         {
+            // Arrange
             var inputString = AutoFaker.Create().Generate<string>();
             var expected = string.Format("{0} what the input in a virtual is Prime.", inputString);
+            _primeServiceMock!.Setup(x => x.IsPrimeVirtual(It.IsAny<string>())).Returns(expected);
 
-            var primeServiceMock = new Mock<IPrimeService>();
-            primeServiceMock.Setup(x => x.IsPrimeVirtual(It.IsAny<string>())).Returns(expected);
+            // Act
+            var actual = _inferenceService!.IsInferenceVirtual(inputString);
 
-            var _inferenceService = new InferenceService(primeServiceMock.Object);
-
-            var actual = _inferenceService.IsInferenceVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
     }

@@ -6,39 +6,48 @@ using Prime.Services;
 
 namespace GenericInference.Services.Tests
 {
-    [TestFixture, NonParallelizable]
     public class GenericInferenceServiceTests
     {
-        [Test]
-        public void IsGenericInferenceNonVirtualTest()
+        private Mock<PrimeService>? _primeServiceMock;
+        private GenericInferenceService<PrimeService>? _genericInferenceService;
+
+        [SetUp]
+        public void Setup()
         {
+            // Create a mock of the prime service
+            _primeServiceMock = new Mock<PrimeService>();
+
+            // Create an instance of the generic inference service using the mock object
+            _genericInferenceService = new GenericInferenceService<PrimeService>(_primeServiceMock.Object);
+        }
+
+        [Test]
+        public void IsGenericInferenceNonVirtual_ReturnsCorrectResult()
+        {
+            // Arrange
             var inputString = AutoFaker.Create().Generate<string>();
             var expected = string.Format("{0} what the input in a non-virtual is Prime.", inputString);
+            _primeServiceMock!.Setup(x => x.IsPrimeNonVirtual(It.IsAny<string>())).Returns(expected);
 
-            var primeServiceMock = new Mock<PrimeService>() { CallBase = true };
+            // Act
+            var actual = _genericInferenceService!.IsGenericInferenceNonVirtual(inputString);
 
-            primeServiceMock.Setup(x => x.IsPrimeNonVirtual(It.IsAny<string>())).Returns(expected);
-
-            var _inferenceService = new GenericInferenceService<PrimeService>(primeServiceMock.Object);
-
-            var actual = _inferenceService.IsGenericInferenceNonVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
-        public void IsGenericInferenceVirtualTest()
+        public void IsGenericInferenceVirtual_ReturnsCorrectResult()
         {
+            // Arrange
             var inputString = AutoFaker.Create().Generate<string>();
             var expected = string.Format("{0} what the input in a virtual is Prime.", inputString);
+            _primeServiceMock!.Setup(x => x.IsPrimeVirtual(It.IsAny<string>())).Returns(expected);
 
-            var primeServiceMock = new Mock<PrimeService>();
-            primeServiceMock.Setup(x => x.IsPrimeVirtual(It.IsAny<string>())).Returns(expected);
+            // Act
+            var actual = _genericInferenceService!.IsGenericInferenceVirtual(inputString);
 
-            var _inferenceService = new GenericInferenceService<PrimeService>(primeServiceMock.Object);
-
-            var actual = _inferenceService.IsGenericInferenceVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
     }

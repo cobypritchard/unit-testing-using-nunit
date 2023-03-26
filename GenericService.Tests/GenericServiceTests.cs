@@ -3,58 +3,71 @@ using NUnit.Framework;
 
 namespace Generic.Service.Tests
 {
-    [TestFixture, NonParallelizable]
     public class GenericServiceTests
     {
-        [Test]
-        public void IsPrimeNonVirtualTest_String()
+        private GenericService<string>? _stringService;
+        private GenericService<int>? _intService;
+
+        [SetUp]
+        public void Setup()
         {
+            _stringService = new GenericService<string>();
+            _intService = new GenericService<int>();
+        }
+
+        [Test]
+        public void IsGenericNonVirtual_ReturnsCorrectResult_ForString()
+        {
+            // Arrange
             string inputString = AutoFaker.Create().Generate<string>();
             var expected = string.Format("{0} what the input in a non-virtual is Generic({1}).", inputString, typeof(string));
 
-            var _genericService = new GenericService<string>();
+            // Act
+            var actual = _stringService!.IsGenericNonVirtual(inputString);
 
-            var actual = _genericService.IsGenericNonVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
-        public void IsPrimeVirtualTest_String()
+        public void IsGenericVirtual_ReturnsCorrectResult_ForString()
         {
+            // Arrange
             var inputString = AutoFaker.Create().Generate<string>();
             var expected = string.Format("{0} what the input in a virtual is Generic({1}).", inputString, typeof(string));
 
-            var _genericService = new GenericService<string>();
+            // Act
+            var actual = _stringService!.IsGenericVirtual(inputString);
 
-            var actual = _genericService.IsGenericVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
-        public void IsPrimeNonVirtualTest_Int()
+        public void IsGenericNonVirtual_ReturnsCorrectResult_ForInt()
         {
+            // Arrange
             var inputInt = AutoFaker.Create().Generate<int>();
             var expected = string.Format("{0} what the input in a non-virtual is Generic({1}).", inputInt, typeof(int));
 
-            var _genericService = new GenericService<int>();
+            // Act
+            var actual = _intService!.IsGenericNonVirtual(inputInt);
 
-            var actual = _genericService.IsGenericNonVirtual(inputInt);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
-        public void IsPrimeVirtualTest_Int()
+        public void IsGenericVirtual_ReturnsCorrectResult_ForInt()
         {
+            // Arrange
             var inputInt = AutoFaker.Create().Generate<int>();
             var expected = string.Format("{0} what the input in a virtual is Generic({1}).", inputInt, typeof(int));
 
-            var _genericService = new GenericService<int>();
+            // Act
+            var actual = _intService!.IsGenericVirtual(inputInt);
 
-            var actual = _genericService.IsGenericVirtual(inputInt);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
     }

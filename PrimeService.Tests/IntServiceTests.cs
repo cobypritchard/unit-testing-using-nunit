@@ -3,45 +3,55 @@ using NUnit.Framework;
 
 namespace Prime.Services.Tests
 {
-    [TestFixture, NonParallelizable]
     public class IntServiceTests
     {
-        [Test]
-        public void IsIntNonVirtualTest()
+        private IntService? _intService;
+
+        [SetUp]
+        public void Setup()
         {
+            _intService = new IntService();
+        }
+
+        [Test]
+        public void IsIntNonVirtual_ReturnsCorrectResult()
+        {
+            // Arrange
             var inputString = AutoFaker.Create().Generate<string>();
             var expected = string.Format("{0} what the input in a non-virtual is Int.", inputString);
 
-            var _intService = new IntService();
+            // Act
+            var actual = _intService!.IsIntNonVirtual(inputString);
 
-            var actual = _intService.IsIntNonVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
         
         [Test]
-        public void IsPrimeNonVirtualTest()
+        public void IsPrimeNonVirtual_ReturnsCorrectResult()
         {
+            // Arrange
             var inputString = AutoFaker.Create().Generate<string>();
             var expected = string.Format("{0} what the input in a non-virtual is Prime(Int).", inputString);
 
-            var _intService = new IntService();
+            // Act
+            var actual = _intService!.IsPrimeNonVirtual(inputString);
 
-            var actual = _intService.IsPrimeNonVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
 
         [Test]
-        public void IsPrimeVirtualTest()
+        public void IsPrimeVirtual_ReturnsCorrectResult()
         {
+            // Arrange
             var inputString = AutoFaker.Create().Generate<string>();
             var expected = string.Format("{0} what the input in a virtual is Prime(Int).", inputString);
 
-            var _intService = new IntService();
+            // Act
+            var actual = _intService!.IsPrimeVirtual(inputString);
 
-            var actual = _intService.IsPrimeVirtual(inputString);
-
+            // Assert
             Assert.That(actual, Is.EqualTo(expected));
         }
     }
