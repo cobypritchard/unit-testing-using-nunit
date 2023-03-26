@@ -5,6 +5,7 @@
     <ProjectReference Include="..\StringService\StringService.csproj" />
     <ProjectReference Include="..\GenericService\GenericService.csproj" />
     <ProjectReference Include="..\InferenceService\InferenceService.csproj" />
+    <ProjectReference Include="..\GenericInferenceService\GenericInferenceService.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

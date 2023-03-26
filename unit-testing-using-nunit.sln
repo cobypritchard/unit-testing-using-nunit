@@ -21,6 +21,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InferenceService", "Inferen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InferenceService.Tests", "InferenceService.Tests\InferenceService.Tests.csproj", "{A4D8E6A6-36C5-4A64-9627-3EBB0934A1DC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericInferenceService", "GenericInferenceService\GenericInferenceService.csproj", "{7785A6E8-2ED6-4000-AF6C-F7A23C1F4C5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericInferenceService.Tests", "GenericInferenceService.Tests\GenericInferenceService.Tests.csproj", "{89E995D9-B800-49D1-B897-02F7D7211A98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +70,13 @@ Global
 		{A4D8E6A6-36C5-4A64-9627-3EBB0934A1DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4D8E6A6-36C5-4A64-9627-3EBB0934A1DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4D8E6A6-36C5-4A64-9627-3EBB0934A1DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7785A6E8-2ED6-4000-AF6C-F7A23C1F4C5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7785A6E8-2ED6-4000-AF6C-F7A23C1F4C5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7785A6E8-2ED6-4000-AF6C-F7A23C1F4C5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7785A6E8-2ED6-4000-AF6C-F7A23C1F4C5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89E995D9-B800-49D1-B897-02F7D7211A98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89E995D9-B800-49D1-B897-02F7D7211A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89E995D9-B800-49D1-B897-02F7D7211A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89E995D9-B800-49D1-B897-02F7D7211A98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
