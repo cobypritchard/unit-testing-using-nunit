@@ -1,23 +1,24 @@
 ﻿using Prime.Services;
 
-namespace GenericInference.Service;
-
-public class GenericInferenceService<T> where T : IPrimeService, new()
+namespace GenericInference.Service
 {
-    private T T1;
-
-    public GenericInferenceService(T t1) 
+    public class GenericInferenceService<T> where T : PrimeService, new()
     {
-        T1 = t1;
-    }
+        private T T1;
 
-    public string IsGenericInferenceNonVirtual(string candidate)
-    {
-        return T1.IsPrimeNonVirtual(candidate);
-    }
+        public GenericInferenceService(T t1) 
+        {
+            T1 = t1;
+        }
 
-    public virtual string IsGenericInferenceVirtual(string candidate)
-    {
-        return T1.IsPrimeVirtual(candidate);
+        public string IsGenericInferenceNonVirtual(string candidate)
+        {
+            return T1.IsPrimeNonVirtual(candidate);
+        }
+
+        public virtual string IsGenericInferenceVirtual(string candidate)
+        {
+            return T1.IsPrimeVirtual(candidate);
+        }
     }
 }
